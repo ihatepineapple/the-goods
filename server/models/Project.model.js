@@ -4,8 +4,7 @@ const userSchema = new Schema (
     {
         title: String,
         // owner: { type: Schema.Types.ObjectId, ref: "User" },
-        tools: String,
-        tags: [String],
+        creativeField: String, 
         description: String,
         heroImage: String,
         images: [String],

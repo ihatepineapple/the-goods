@@ -5,12 +5,11 @@ const router = Router();
 const Project = require("../models/Project.model");
 
 router.post("/projects", (req, res) => {
-    const { title, tools, tags, description, heroImage, images } = req.body;
+    const { title, creativeField, description, heroImage, images } = req.body;
   
     Project.create({
       title,
-      tools,
-      tags,
+      creativeField,
       description,
       heroImage,
       images
