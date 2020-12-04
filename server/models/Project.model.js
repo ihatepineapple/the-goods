@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema (
+const projectSchema = new Schema (
     {
         title: String,
         // owner: { type: Schema.Types.ObjectId, ref: "User" },
@@ -14,4 +14,4 @@ const userSchema = new Schema (
       }
 );
 
-module.exports = model("Project", userSchema);
+module.exports = model("Project", projectSchema);
