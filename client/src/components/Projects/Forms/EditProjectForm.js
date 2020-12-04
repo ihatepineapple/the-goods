@@ -1,18 +1,13 @@
-import React,  { useState } from 'react';
+import React,  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-const initialState = {
-    title: "",
-    creativeField: "",
-    description: "",
-    heroImage: "",
-    // images: "",
 
-}
 
-const AddProjectForm = (props) => {
-    const [ formState, setFormState ] = useState(initialState);
+const EditProjectForm = (props) => {
+    const [ formState, setFormState ] = useState({});
+    let projectData = props.match.params.id
+    console.log(projectData)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -24,21 +19,48 @@ const AddProjectForm = (props) => {
         const { title, creativeField, description, heroImage } = formState;
     
         axios
-          .post(
-            "http://localhost:5000/api/projects",
+        .put(
+            `http://localhost:5000/api/projects/${projectData}`,
             { title, creativeField, description, heroImage },
             { withCredentials: true }
-          )
-          .then(() => {
-            // props.getData();
-            setFormState(initialState);
+        )
+        .then(() => {
+            projectData.getTheProject();
+            projectData.history.push("/projects");
+        })
+        .catch((error) => console.error(error));
+      };
+      
+    const getDataFromProject = () => {
+        axios
+        .get(
+            `http://localhost:5000/api/projects/${projectData}`,
+    
+        )
+        .then((dataFromDB) => {
+            console.log(dataFromDB)
+            setFormState(dataFromDB.data)
+        })
+        .catch((error) => console.error(error));
+    }
+
+    const deleteProject = () => {
+        
+        axios
+          .delete(`http://localhost:5000/api/projects/${projectData}`, {
+            withCredentials: true,
+          })
+          .then((results) => {
+            props.history.push("/projects");
           })
           .catch((error) => console.error(error));
-      };
+    };
+    
+    useEffect(getDataFromProject, [projectData]);
 
     return (
         <div>
-        <h1>Add Project</h1>
+        <h1>Edit Project</h1>
         <Link to="/projects"><button>Go Back</button></Link>
         <form onSubmit={handleFormSubmit}>
             <label htmlFor="title">Title:</label>
@@ -72,8 +94,8 @@ const AddProjectForm = (props) => {
             onChange={handleInputChange}
             />
 
-            <button type="submit">Upload Project</button>
-
+            <button type="submit">Update Project</button>
+            <button onClick={() => deleteProject(formState._id)}>Delete project</button>
 
         </form>
             
@@ -82,4 +104,4 @@ const AddProjectForm = (props) => {
 }
 
 
-export default AddProjectForm;
+export default EditProjectForm;
