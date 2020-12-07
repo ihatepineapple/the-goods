@@ -9,10 +9,16 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const passport     = require("passport");
+const session      = require("express-session");
+
 
 
 // Database connection
 require("./configs/db.config");
+
+// Passport configuration
+require("./configs/passport.config");
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -30,6 +36,19 @@ app.use(
     credentials: true,
   })
 );
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SESS_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 
@@ -55,6 +74,7 @@ app.locals.title = 'The Goods';
 // const index = require('./routes/index');
 app.use('/api', require('./routes/index'));
 app.use('/api', require('./routes/Project.routes'));
+app.use('/api', require('./routes/auth.routes'));
 
 
 module.exports = app;
