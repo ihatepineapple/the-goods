@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 
 const User = require("../models/User.model");
 
-/* SIGNUP ROUTE */
 router.post("/signup", (req, res) => {
   const { email, password, type } = req.body;
 
@@ -63,7 +62,6 @@ router.post("/signup", (req, res) => {
   });
 });
 
-/* LOGIN ROUTE */
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
@@ -87,6 +85,21 @@ router.post("/login", (req, res, next) => {
       res.status(200).json(theUser);
     });
   })(req, res, next);
+});
+
+router.post("/logout", (req, res) => {
+  req.logout();
+  res.status(200).json({ message: "Log out success!" });
+});
+
+/* LOGGEDIN */
+router.get("/loggedin", (req, res) => {
+  // req.isAuthenticated() is defined by passport
+  if (req.isAuthenticated()) {
+    res.status(200).json(req.user);
+    return;
+  }
+  res.status(403).json({ message: "Unauthorized" });
 });
 
 module.exports = router;
