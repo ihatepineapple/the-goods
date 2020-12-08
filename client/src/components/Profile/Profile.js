@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import EditProfileForm from "./Forms/EditProfileForm"
 
 import AuthService from "../../services/auth-services";
 
 const Profile = (props) => {
-    const [loggedInUser, setLoggedInUser] = useState(null);
-
+    // const [loggedInUser, setLoggedInUser] = useState(null);
+    const [profileDetails, setProfileDetails] = useState({});
     const service = new AuthService();
 
-    useEffect(() => {
-        setLoggedInUser(props.userInSession);
-      }, [props.userInSession]);
-
-    if (loggedInUser) {
+    const getProfileDetails = () => {
+       
+        const id  = props.loggedInUser._id;
+    
+        axios
+          .get(`http://localhost:5000/api/profile/${id}`, {
+            withCredentials: true,
+          })
+          .then((responseFromApi) => {
+            setProfileDetails(responseFromApi.data);
+          })
+          .catch((error) => console.error(error));
+      };
+    
+    useEffect(getProfileDetails, [props.loggedInUser._id]);
+   
+    if (props.loggedInUser) {
         return (
             <div>
-            <h1>this is the profile of {loggedInUser.firstName}</h1>
-                <h2>{loggedInUser.firstName} {loggedInUser.lastName} </h2>
+            <h1>this is the profile of {profileDetails.firstName}</h1>
+              <div className="info-container">
+                  <h3>{profileDetails.firstName} {profileDetails.lastName}</h3>
+                  <p>{profileDetails.creativeFields}</p>
+                  <h5><b>Location:</b>{profileDetails.location}</h5>
+                  <h5><b>Portfolio:</b>{profileDetails.extWeb}</h5>
+                  <p><b>About:</b>{profileDetails.about}</p>
+                <Link to={`/profile/${props.loggedInUser._id}/edit`}>Edit Profile</Link>
+              </div> 
                 
-                {/* <Link to="/projects"><button>Go Back</button></Link> */}
+                
             </div>
         )
     }

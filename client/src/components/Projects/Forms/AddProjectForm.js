@@ -52,7 +52,7 @@ const AddProjectForm = (props) => {
             <label htmlFor="creativeField">Creative Field:</label>
             <input
             type="text"
-            name="title"
+            name="creativeField"
             value={formState.creativeField}
             onChange={handleInputChange}
             />

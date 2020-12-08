@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import { Switch, Route, useParams } from "react-router-dom";
+import { Switch, Route, useParams, Redirect } from "react-router-dom";
 import AuthService from '../../services/auth-services';
 
 import Home from './Home';
@@ -13,6 +13,7 @@ import Signup from '../Auth/Signup';
 import Login from '../Auth/Login';
 import Navbar from "../Navbar/Navbar";
 import ProtectedRoute from "../Auth/ProtectedRoute";
+import EditProfileForm from "../Profile/Forms/EditProfileForm";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -58,25 +59,38 @@ function App() {
     <section className="App">
       <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
       <Switch>
-        <ProtectedRoute
-          user={loggedInUser}
-          path="/projects/:id"
-          component={ProjectDetails}
-        />
-        <ProtectedRoute
-          user={loggedInUser}
-          path="/projects"
-          component={ProjectList}
+        <Route 
+        getUser={getLoggedInUser}
+        exact path="/login" 
+        render={() => <Redirect to="/profile"/>}
+
         />
         <ProtectedRoute
           user={loggedInUser}
           exact path="/projects/create"
           component={AddProjectForm}
         />
+        
+        <ProtectedRoute
+          user={loggedInUser}
+          exact path="/projects"
+          component={ProjectList}
+        />
+        
         <ProtectedRoute
           user={loggedInUser}
           exact path="/profile"
-          render={() => <Profile getUser={getLoggedInUser} />}
+          component={Profile}
+        />
+        <ProtectedRoute
+          user={loggedInUser}
+          exact path="/profile/:id/edit"
+          component={EditProfileForm}
+        />
+        <ProtectedRoute
+          user={loggedInUser}
+          path="/projects/:id"
+          component={ProjectDetails}
         />
       </Switch>
     </section>

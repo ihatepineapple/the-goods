@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = Router();
 
 const Project = require("../models/Project.model");
+const User = require("../models/User.model");
 
 router.post("/projects", (req, res) => {
     const { title, creativeField, description, heroImage, images } = req.body;
@@ -12,11 +13,18 @@ router.post("/projects", (req, res) => {
       creativeField,
       description,
       heroImage,
-      images
+      images: [],
+      owner: req.user._id,
      
     })
       .then((response) => {
+        return User.findByIdAndUpdate(req.user._id, {
+          $push: { projects: response._id },
+        });
+      })
+      .then((response) => {
         res.status(200).json(response);
+        //populate response id 
       })
       .catch((err) => {
         res.status(500).json(err);
