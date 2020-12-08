@@ -13,6 +13,7 @@ router.get("/profile/:id", (req, res) => {
     }
   
     User.findById(id)
+      .populate("projects")
       .then((user) => {
         res.status(200).json(user);
       })
