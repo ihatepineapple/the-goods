@@ -139,7 +139,42 @@ footer .footer-links a {
   font-size: 1.2em;
 }
 
-.form-container form {
+.form-container-wide {
+  background-color: white;
+  width: 70%;
+  font-size: 1.2em;
+}
+
+.form-wide-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: left;
+}
+
+.wide-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px;
+}
+
+.wide-columns textarea {
+  width: 300px;
+}
+
+form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,14 +185,14 @@ footer .footer-links a {
   padding: 30px;
 }
 
-.form-container form label {
+form label {
   font-weight: 300;
   margin-bottom: 10px;
   text-align: left;
   margin-right: 20px;
 }
 
-.form-container form input {
+form input {
   height: 20px;
   border: none;
   border-bottom: 2px dimgray solid;
@@ -168,7 +203,7 @@ footer .footer-links a {
   font-family: 200;
 }
 
-.form-container .form-link {
+.form-link {
   text-decoration: none;
   font-weight: 600;
 }
@@ -178,5 +213,43 @@ footer .footer-links a {
   font-weight: 100;
   font-size: 2em;
   font-style: italic;
+}
+
+.info-wrapper {
+  background-color: whitesmoke;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 50px 100px;
+}
+
+.back-line {
+  background-image: url("../images/dot-grid.png");
+  width: 100vw;
+  height: 200px;
+  position: fixed;
+}
+
+.info-container {
+  background-color: white;
+  border: 1px solid lightgray;
+  width: 25%;
+  height: 600px;
+}
+
+.info-container p {
+  padding: 10px;
+}
+
+.project-container {
+  width: 75%;
 }
 /*# sourceMappingURL=style.css.map */

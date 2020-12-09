@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import EditProfileForm from "./Forms/EditProfileForm"
 import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import '../../assets/stylesheets/style.css';
 
 import AuthService from "../../services/auth-services";
 
@@ -51,18 +53,21 @@ const Profile = (props) => {
    
     if (props.loggedInUser) {
         return (
-            <div>
-            <h1>this is the profile of {profileDetails.firstName}</h1>
+          
+            <div className="info-wrapper">
+              
+            {/* <h1>this is the profile of {profileDetails.firstName}</h1> */}
                 <div className="info-container">
                     <h3>{profileDetails.firstName} {profileDetails.lastName}</h3>
                     <p>{profileDetails.creativeFields}</p>
-                    <h5><RoomOutlinedIcon fontSize="small" /><b>Location:</b>{profileDetails.location}</h5>
-                    <h5><b>Portfolio:</b>{profileDetails.extWeb}</h5>
+                    <p><RoomOutlinedIcon fontSize="small" />{profileDetails.location}</p>
+                    <p><InfoOutlinedIcon fontSize="small" />{profileDetails.extWeb}</p>
                     <p><b>About:</b>{profileDetails.about}</p>
                     <Link to={`/profile/${props.loggedInUser._id}/edit`}>Edit Profile</Link>
                 </div> 
-                
-                    <h4>Project List</h4>
+               
+                <div className="project-container">
+                <h4>Project List</h4>
                     {userProjectList.map((project) => {
                         return (
                             <div key={project._id} className="projects-list">
@@ -76,6 +81,7 @@ const Profile = (props) => {
                         );
                     })};
                     <Link to="/projects/create"><button>Add New Project</button></Link>
+                </div>    
             </div>
         )
     }

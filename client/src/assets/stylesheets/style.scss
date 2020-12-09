@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
 body {
     margin: 0;
     padding: 0;
@@ -126,37 +127,58 @@ footer {
     width: 40%;
     font-size: 1.2em;
     // margin-top: -200px;
+}
 
-    form {
-        display: flex;
-        flex-direction: column;
-        padding: 30px;
+.form-container-wide {
+    background-color: white;
+    width: 70%;
+    font-size: 1.2em;
+    // margin-top: -200px;
+}
+
+.form-wide-columns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.wide-columns {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
 
 
-        label {
-            font-weight: 300;
-            margin-bottom: 10px;
-            text-align: left; 
-            margin-right: 20px;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
 
-        input {
-            height: 20px;
-            border: none;
-            border-bottom: 2px dimgray solid;
-            margin-bottom: 20px;
-            color: dimgray;
-            font-style: italic;
-            font-size: 1em;
-            font-family: 200;
-        }
+
+    label {
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-align: left; 
+    margin-right: 20px;
     }
-    .form-link {
-        text-decoration: none;
-        font-weight: 600;
+
+    input {
+        height: 20px;
+        border: none;
+        border-bottom: 2px dimgray solid;
+        margin-bottom: 20px;
+        color: dimgray;
+        font-style: italic;
+        font-size: 1em;
+        font-family: 200;
     }
 }
 
+.form-link {
+    text-decoration: none;
+    font-weight: 600;
+}
 
 
 .form-title {
@@ -164,4 +186,35 @@ footer {
     font-weight: 100;
     font-size: 2em;
     font-style: italic;
+}
+
+.info-wrapper {
+    background-color: whitesmoke;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 50px 100px; 
+}
+
+.back-line {
+    background-image: url("../images/dot-grid.png");
+    width: 100vw;
+    height: 200px;
+    position: fixed;
+}
+.info-container {
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 25%;
+    height: 600px;
+    // margin: 50px 100px;
+
+    p {
+        padding: 10px;
+    }
+}
+
+.project-container {
+    width: 75%;
 }
