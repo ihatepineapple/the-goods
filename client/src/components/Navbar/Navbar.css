@@ -4,17 +4,21 @@ nav {
     font-family: 'Barlow Condensed', sans-serif;
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-content: center;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.4em;
     color: grey;
     background-color: white;
     border-bottom: solid 1px whitesmoke;
-    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    height: 80px;
+    
 }
 
 .userName {
     color: black;  
+    font-weight: 500;
     
 }
 
@@ -23,6 +27,7 @@ nav ul {
     display: flex;
     flex-direction: row;
     justify-content: end;
+    
 }
 
 nav ul li {

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 body {
-  background-color: pink;
   margin: 0;
   padding: 0;
   font-family: 'Barlow Semi Condensed', sans-serif;
@@ -13,8 +12,8 @@ body {
   background-repeat: no-repeat;
   width: 100%;
   height: 818px;
-  padding-top: -20px;
-  margin-top: -20px;
+  padding-top: -1px;
+  margin-top: -1px;
 }
 
 .landing-box .landing-img {
@@ -34,7 +33,7 @@ body {
   line-height: 0.5em;
 }
 
-.landing-box .signup-btn {
+.black-btn {
   font-family: 'Barlow Condensed';
   background-color: black;
   color: white;
@@ -45,11 +44,139 @@ body {
   border: none;
 }
 
-.landing-box .signup-btn:hover {
+.black-btn:hover {
   font-weight: 500;
 }
 
-.landing-box .signup-btn:focus {
+.black-btn:focus {
   outline: 0;
+}
+
+.landing-info {
+  background-image: url("../images/dot-grid.png");
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 0;
+}
+
+.landing-snippet {
+  background-color: white;
+  width: 300px;
+  height: 250px;
+  padding: 25px;
+  margin: 30px;
+  color: dimgray;
+}
+
+.landing-snippet h2 {
+  font-size: 2em;
+}
+
+.landing-snippet p {
+  font-size: 1.5em;
+}
+
+footer {
+  background-color: whitesmoke;
+  margin: 0;
+  height: 200px;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  font-size: 1.2em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer .footer-info {
+  width: 40%;
+  padding: 40px;
+}
+
+footer .footer-links {
+  width: 20%;
+  padding-left: 100px;
+}
+
+footer .footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-wrapper {
+  background-image: url("../images/dot-grid.png");
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-container {
+  background-color: white;
+  width: 40%;
+  font-size: 1.2em;
+}
+
+.form-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px;
+}
+
+.form-container form label {
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-right: 20px;
+}
+
+.form-container form input {
+  height: 20px;
+  border: none;
+  border-bottom: 2px dimgray solid;
+  margin-bottom: 20px;
+  color: dimgray;
+  font-style: italic;
+  font-size: 1em;
+  font-family: 200;
+}
+
+.form-container .form-link {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-title {
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 2em;
+  font-style: italic;
 }
 /*# sourceMappingURL=style.css.map */

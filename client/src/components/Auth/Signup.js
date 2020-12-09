@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-services";
+import '../../assets/stylesheets/style.css';
 
 
 const initialState = { 
@@ -42,8 +43,9 @@ const Signup = (props) => {
       };
     
     return (
-      <div>
-        <h1>Sign Up</h1>
+      <div className="form-wrapper">
+        <div className="form-container">
+        <h2 className="form-title">Sign Up</h2>
         <form onSubmit={handleFormSubmit}>
           <label>First Name:</label>
           <input
@@ -94,11 +96,13 @@ const Signup = (props) => {
             onChange={handleChange}
           />
   
-        <button type="submit">Sign Up</button>
+        <div><button className="black-btn" type="submit">Sign Up</button></div>
         </form>
         <br />
   
         {registerErrorMsg && <span style={{ color: "red" }}>{registerErrorMsg}</span>}
+
+        </div>
   
         
       </div>

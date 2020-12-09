@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import '../../assets/stylesheets/style.css';
 
 import AuthService from "../../services/auth-services";
 
@@ -37,31 +38,34 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <h2>Log in</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label>Email:</label>
-        <input
-          type="text"
-          name="email"
-          value={loginState.email}
-          onChange={handleChange}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={loginState.password}
-          onChange={handleChange}
-        />
+    <div className="form-wrapper">
+      <div className="form-container">
+        <h2 className="form-title">Log in</h2>
+        <form onSubmit={handleFormSubmit}>
+          <label>Email:</label>
+          <input
+            type="text"
+            name="email"
+            value={loginState.email}
+            onChange={handleChange}
+            // placeholder="Type your email here"
+          />
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={loginState.password}
+            onChange={handleChange}
+          />
 
-        <button type="submit">Log in</button>
-      </form>
-      <br />
+          <div><button className="black-btn" type="submit">Log in</button></div>
+        </form>
+        <br />
+        <div><p>Not a member? <Link to="/signup" className="form-link">Sign up</Link></p></div>
+        
 
-      {loginErrorMsg && <span style={{ color: "red" }}>{loginErrorMsg}</span>}
-
-      
+        {loginErrorMsg && <span style={{ color: "red" }}>{loginErrorMsg}</span>}
+        </div>
     </div>
   );
 };

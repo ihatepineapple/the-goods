@@ -97,6 +97,7 @@ const EditProjectForm = (props) => {
             <input
             type="file"
             name="images"
+            multiple
             onChange={handleInputChange}
             />  
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import LogoB from '../../assets/images/logoB.png';
 
 import AuthService from "../../services/auth-services";
 
@@ -23,7 +24,10 @@ const Navbar = (props) => {
   if (loggedInUser) {
     return (
       <nav className="nav-style-loggedin">
-        <ul>
+        <div>
+          <Link to="/"><img src={LogoB} alt="the-goods" style={{height: "30px", padding: "10px"}}/></Link>
+        </div>
+        <div><ul>
           <li><span className="userName">Welcome, {loggedInUser.firstName}</span></li>
           <li>
             <Link to="/projects" style={{ textDecoration: "none" }}>
@@ -40,19 +44,18 @@ const Navbar = (props) => {
               Logout
             </Link>
           </li>
-        </ul>
+        </ul></div>
       </nav>
     );
   } else {
     return (
       <div>
         <nav className="nav-style">
-          <ul>
-            <li>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                Home
-              </Link>
-            </li>
+        <div>
+          <Link to="/"><img src={LogoB} alt="the-goods" style={{height: "30px", padding: "10px"}}/></Link>
+        </div>
+        <div>
+        <ul>
             <li>
               <Link to="/login" style={{ textDecoration: "none" }}>
                 Log in
@@ -64,6 +67,8 @@ const Navbar = (props) => {
               </Link>
             </li>
           </ul>
+        </div>
+          
         </nav>
       </div>
     );
