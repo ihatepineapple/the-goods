@@ -7,7 +7,7 @@ const initialState = {
     creativeField: "",
     description: "",
     heroImage: "",
-    // images: "",
+    images: [],
 
 }
 
@@ -21,12 +21,12 @@ const AddProjectForm = (props) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        const { title, creativeField, description, heroImage } = formState;
+        const { title, creativeField, description, heroImage, images } = formState;
     
         axios
           .post(
             "http://localhost:5000/api/projects",
-            { title, creativeField, description, heroImage },
+            { title, creativeField, description, heroImage, images },
             { withCredentials: true }
           )
           .then(() => {
@@ -66,11 +66,17 @@ const AddProjectForm = (props) => {
 
             <label htmlFor="coverImage">Cover Image:</label>
             <input
-            type="text"
+            type="file"
             name="heroImage"
-            value={formState.heroImage}
             onChange={handleInputChange}
             />
+
+            <label htmlFor="images">Images:</label>
+            <input
+            type="file"
+            name="images"
+            onChange={handleInputChange}
+            />    
 
             <button type="submit">Upload Project</button>
 

@@ -63,7 +63,7 @@ function ProjectList() {
                     </div>  
                 )
             })
-            };
+            }
         </div>
             
         </div>

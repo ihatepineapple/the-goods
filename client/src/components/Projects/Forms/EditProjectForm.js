@@ -88,11 +88,17 @@ const EditProjectForm = (props) => {
 
             <label htmlFor="coverImage">Cover Image:</label>
             <input
-            type="text"
+            type="file"
             name="heroImage"
-            value={formState.heroImage}
             onChange={handleInputChange}
             />
+
+            <label htmlFor="images">Images:</label>
+            <input
+            type="file"
+            name="images"
+            onChange={handleInputChange}
+            />  
 
             <button type="submit">Update Project</button>
             <button onClick={() => deleteProject(formState._id)}>Delete project</button>

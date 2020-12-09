@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
+
 const EditProfileForm = (props) => {
     const [ formState, setFormState ] = useState(props.loggedInUser);
     let profileData = props.match.params.id;
@@ -75,9 +76,8 @@ const EditProfileForm = (props) => {
 
             <label htmlFor="userImg">Profile Image:</label>
             <input
-            type="text"
+            type="file"
             name="userImg"
-            value={formState.userImg}
             onChange={handleInputChange}
             />
 
