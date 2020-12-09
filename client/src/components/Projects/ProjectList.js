@@ -31,7 +31,7 @@ function ProjectList() {
                             <h4>{project.creativeField}</h4>
                             <p>{project.description}</p>
                             <img src={project.heroImage} alt={project.title} height="200" />
-                            <Link to={`/projects/${project._id}/edit`}> <button>Edit Project</button></Link>
+
                         </div>
                         
                     </div>  

@@ -8,6 +8,7 @@ import AuthService from "../../services/auth-services";
 const Profile = (props) => {
     // const [loggedInUser, setLoggedInUser] = useState(null);
     const [profileDetails, setProfileDetails] = useState({});
+    const [userProjectList, setUserProjectList] = useState([]);
 
     const service = new AuthService();
 
@@ -23,13 +24,28 @@ const Profile = (props) => {
             setProfileDetails(responseFromApi.data);
           })
           .catch((error) => console.error(error));
-      };
+    };
     
+      console.log(profileDetails.projects)
+    
+
     useEffect(getProfileDetails, [props.loggedInUser._id]);
 
-    // const getUserProjects = () = {
-
-    // }
+    const getProjectList = () => {
+       
+        const id  = props.loggedInUser._id;
+    
+        axios
+          .get(`http://localhost:5000/api/profile/${id}`, {
+            withCredentials: true,
+          })
+          .then((responseFromApi) => {
+            setUserProjectList(responseFromApi.data.projects);
+          })
+          .catch((error) => console.error(error));
+    };
+    useEffect(getProjectList, [props.loggedInUser._id]);
+    console.log(userProjectList)
    
     if (props.loggedInUser) {
         return (
@@ -45,18 +61,18 @@ const Profile = (props) => {
                 </div> 
                 
                     <h4>Project List</h4>
-                    {/* {profileDetails.projects.map((project) => {
+                    {userProjectList.map((project) => {
                         return (
                             <div key={project._id} className="projects-list">
                             <Link to={`/projects/${project._id}`}>
                                 <h3>{project.title}</h3>
                             </Link>
                             <img src={project.heroImage} alt={project.title} height="200" />
+                            <Link to={`/projects/${project._id}/edit`}> <button>Edit Project</button></Link>
                             </div>
+
                         );
-                        })} */}
-               
-                
+                    })};
             </div>
         )
     }

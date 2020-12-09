@@ -34,14 +34,25 @@ const ProjectDetails = (props) => {
           })
           .catch((error) => console.error(error));
       };
-    
+    const ownershipCheck = (project) => {
+      if (props.loggedInUser && project.owner === props.loggedInUser._id) {
+        return (
+          <div>
+            <button onClick={() => deleteProject(details._id)}>
+              Delete project
+            </button>
+          </div>
+          );
+      }
+    };
 
     return (
         <div>
         <h1>this is the details of the project</h1>
             <h2>{details.title}</h2>
             <h3>{details.creativeField}</h3>
-            <button onClick={() => deleteProject(details._id)}>Delete project</button>
+            {ownershipCheck(details)}
+            {/* <button onClick={() => deleteProject(details._id)}>Delete project</button> */}
             <Link to="/projects"><button>Go Back</button></Link>
         </div>
     )
