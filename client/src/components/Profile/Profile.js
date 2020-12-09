@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import EditProfileForm from "./Forms/EditProfileForm"
+import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 
 import AuthService from "../../services/auth-services";
 
@@ -54,7 +56,7 @@ const Profile = (props) => {
                 <div className="info-container">
                     <h3>{profileDetails.firstName} {profileDetails.lastName}</h3>
                     <p>{profileDetails.creativeFields}</p>
-                    <h5><b>Location:</b>{profileDetails.location}</h5>
+                    <h5><RoomOutlinedIcon fontSize="small" /><b>Location:</b>{profileDetails.location}</h5>
                     <h5><b>Portfolio:</b>{profileDetails.extWeb}</h5>
                     <p><b>About:</b>{profileDetails.about}</p>
                     <Link to={`/profile/${props.loggedInUser._id}/edit`}>Edit Profile</Link>
@@ -73,6 +75,7 @@ const Profile = (props) => {
 
                         );
                     })};
+                    <Link to="/projects/create"><button>Add New Project</button></Link>
             </div>
         )
     }
