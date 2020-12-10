@@ -2,12 +2,14 @@ import React,  { useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+import UploadService from "../../../services/upload-services";
 
 
 const EditProfileForm = (props) => {
     const [ formState, setFormState ] = useState(props.loggedInUser);
     let profileData = props.match.params.id;
-    console.log(profileData);
+    
+    const service = new UploadService();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -25,10 +27,23 @@ const EditProfileForm = (props) => {
             { withCredentials: true }
           )
           .then(() => {
-            // profileData.getTheProject();
             props.history.push(`/profile`);
         })
           .catch((error) => console.error(error));
+      };
+
+     const handleFileUpload = (event) => {
+        const uploadData = new FormData();
+        uploadData.append("userImg", event.target.files[0]);
+      
+        service
+          .uploadProfile(uploadData)
+          .then((response) => {
+            setFormState({ ...formState, userImg: response.cloudinaryUrl });
+          })
+          .catch((err) => {
+            console.log("Error while uploading the file: ", err);
+          });
       };
 
     return (
@@ -81,10 +96,9 @@ const EditProfileForm = (props) => {
 
                 <label htmlFor="userImg">Profile Image:</label>
                 <input
-                // className="file-upload-custom"
                 type="file"
                 name="userImg"
-                onChange={handleInputChange}
+                onChange={handleFileUpload}
                 />
 
                 <label htmlFor="about">About you:</label>

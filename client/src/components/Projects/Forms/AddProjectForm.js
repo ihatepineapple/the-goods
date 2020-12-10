@@ -33,23 +33,18 @@ const AddProjectForm = (props) => {
             { withCredentials: true }
           )
           .then(() => {
-            // props.getData();
             setFormState(initialState);
           })
           .catch((error) => console.error(error));
       };
 
     const handleFileUpload = (event) => {
-        // Creates a new FormData object that will take the file upload data
       const uploadData = new FormData();
       uploadData.append("heroImage", event.target.files[0]);
     
-        // upload the data to cloudinary
       service
         .uploadHero(uploadData)
         .then((response) => {
-          console.log(response)
-            // The response from uploading to cloudinary is the url which will be saved in the database.
           setFormState({ ...formState, heroImage: response.cloudinaryUrl });
         })
         .catch((err) => {
@@ -58,21 +53,17 @@ const AddProjectForm = (props) => {
     };
 
     const handleImagesUpload = (event) => {
-      // Creates a new FormData object that will take the file upload data
-      console.log(event.target.files)
+      
       const fileList = [...event.target.files]
-      console.log(fileList)
+      
     const uploadData = new FormData();
-    // uploadData.append("images", [...fileList]);
     fileList.forEach((element) => {
       uploadData.append("images", element)
     })
   
-      // upload the data to cloudinary
     service
       .uploadImages(uploadData)
       .then((response) => {
-          // The response from uploading to cloudinary is the url which will be saved in the database.
         setFormState({ ...formState, images: response.cloudinaryUrl });
       })
       .catch((err) => {

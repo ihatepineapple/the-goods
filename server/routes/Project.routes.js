@@ -50,6 +50,7 @@ router.get("/projects/:id", (req, res) => {
     }
   
     Project.findById(id)
+      .populate("owner")
       .then((project) => {
         res.status(200).json(project);
       })
