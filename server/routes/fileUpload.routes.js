@@ -13,7 +13,10 @@ router.post("/upload-hero", fileUploader.single("heroImage"), (req, res, next) =
 });
 
 router.post("/upload-images", fileUploader.array('images', 6), (req, res, next) => {
-  res.status(200).json({ cloudinaryUrl: req.file.path });
+  
+  const imagesArray = req.files.map((imageObject) => imageObject.path)
+  console.log(imagesArray)
+  res.status(200).json({ cloudinaryUrl: imagesArray });
 });
 
 module.exports = router;

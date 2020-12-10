@@ -13,7 +13,7 @@ router.post("/projects", (req, res) => {
       creativeField,
       description,
       heroImage,
-      images: [],
+      images,
       owner: req.user._id,
      
     })
@@ -58,7 +58,7 @@ router.get("/projects/:id", (req, res) => {
       });
 });
 
-router.put("/projects/:id", (req, res) => {
+router.put("/projects/:id/edit", (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {

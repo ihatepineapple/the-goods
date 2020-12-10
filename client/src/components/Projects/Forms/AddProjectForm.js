@@ -1,6 +1,7 @@
 import React,  { useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import UploadService from "../../../services/upload-services";
 
 const initialState = {
     title: "",
@@ -13,6 +14,8 @@ const initialState = {
 
 const AddProjectForm = (props) => {
     const [ formState, setFormState ] = useState(initialState);
+
+    const service = new UploadService();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -36,54 +39,111 @@ const AddProjectForm = (props) => {
           .catch((error) => console.error(error));
       };
 
+    const handleFileUpload = (event) => {
+        // Creates a new FormData object that will take the file upload data
+      const uploadData = new FormData();
+      uploadData.append("heroImage", event.target.files[0]);
+    
+        // upload the data to cloudinary
+      service
+        .uploadHero(uploadData)
+        .then((response) => {
+          console.log(response)
+            // The response from uploading to cloudinary is the url which will be saved in the database.
+          setFormState({ ...formState, heroImage: response.cloudinaryUrl });
+        })
+        .catch((err) => {
+          console.log("Error while uploading the file: ", err);
+        });
+    };
+
+    const handleImagesUpload = (event) => {
+      // Creates a new FormData object that will take the file upload data
+      console.log(event.target.files)
+      const fileList = [...event.target.files]
+      console.log(fileList)
+    const uploadData = new FormData();
+    // uploadData.append("images", [...fileList]);
+    fileList.forEach((element) => {
+      uploadData.append("images", element)
+    })
+  
+      // upload the data to cloudinary
+    service
+      .uploadImages(uploadData)
+      .then((response) => {
+          // The response from uploading to cloudinary is the url which will be saved in the database.
+        setFormState({ ...formState, images: response.cloudinaryUrl });
+      })
+      .catch((err) => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
     return (
-        <div>
-        <h1>Add Project</h1>
-        <Link to="/projects"><button>Go Back</button></Link>
+        <div className="form-wrapper">
+          <div className="form-container-wide">
+        <h2 className="form-title">Add Project</h2>
+        <Link to="/projects"><button className="white-btn">Go Back</button></Link>
         <form onSubmit={handleFormSubmit}>
-            <label htmlFor="title">Title:</label>
-            <input
-            type="text"
-            name="title"
-            value={formState.title}
-            onChange={handleInputChange}
-            />
+            <div className="form-wide-columns">
+              <div className="wide-columns">
+                <label htmlFor="title">Title:</label>
+                <input
+                type="text"
+                name="title"
+                value={formState.title}
+                onChange={handleInputChange}
+                />
 
-            <label htmlFor="creativeField">Creative Field:</label>
-            <input
-            type="text"
-            name="creativeField"
-            value={formState.creativeField}
-            onChange={handleInputChange}
-            />
+                <label htmlFor="creativeField">Creative Field:</label>
+                <input
+                type="text"
+                name="creativeField"
+                value={formState.creativeField}
+                onChange={handleInputChange}
+                />
 
-            <label htmlFor="Description">Description:</label>
-            <textarea
-            name="description"
-            value={formState.description}
-            onChange={handleInputChange}
-            />
+                <label htmlFor="Description">Description:</label>
+                <textarea
+                name="description"
+                value={formState.description}
+                onChange={handleInputChange}
+                />
+              </div>  
 
-            <label htmlFor="coverImage">Cover Image:</label>
-            <input
-            type="file"
-            name="heroImage"
-            onChange={handleInputChange}
-            />
+              <div className="wide-columns">
+                <label htmlFor="coverImage">Cover Image:</label>
+                <input
+                type="file"
+                name="heroImage"
+                onChange={handleFileUpload}
+                />
 
-            <label htmlFor="images">Images:</label>
-            <input
-            type="file"
-            name="images"
-            multiple
-            onChange={handleInputChange}
-            />    
+                <label htmlFor="images">Images:</label>
+                <input
+                type="file"
+                name="images"
+                multiple
+                onChange={handleImagesUpload}
+                />    
 
-            <button type="submit">Upload Project</button>
+                <div className="final-btn-container">
+                  {(formState.heroImage || formState.images) ?
+                    <button type="submit" className="black-btn">Upload Project</button>
+                    
+                    :
+                    <button disabled type="submit" className="black-btn">Upload Project</button> }
+                  
+                </div>
+              </div>
+          
+        </div>
 
 
         </form>
             
+        </div>
         </div>
     )
 }

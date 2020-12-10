@@ -36,7 +36,7 @@ const EditProfileForm = (props) => {
         <div className="form-container-wide">
           <h2 className="form-title">Edit your profile</h2>
           <p>Complete your profle to gain more visibility</p>
-          <Link to={`/profile/${profileData}`} ><button>Go Back</button></Link>
+          <Link to={`/profile/${profileData}`} ><button className="white-btn">Go Back</button></Link>
           <form onSubmit={handleFormSubmit}>
               <div className="form-wide-columns">
               <div className="wide-columns">
@@ -81,6 +81,7 @@ const EditProfileForm = (props) => {
 
                 <label htmlFor="userImg">Profile Image:</label>
                 <input
+                // className="file-upload-custom"
                 type="file"
                 name="userImg"
                 onChange={handleInputChange}
@@ -94,7 +95,7 @@ const EditProfileForm = (props) => {
                 onChange={handleInputChange}
                 />
 
-                <div><button className="black-btn" type="submit">Update Profile</button></div>
+                <div className="final-btn-container"><button className="black-btn" type="submit">Update Profile</button></div>
               </div>
               </div>
 

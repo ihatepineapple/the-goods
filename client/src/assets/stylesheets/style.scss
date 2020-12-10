@@ -55,6 +55,25 @@ body {
     }
 }
 
+.white-btn {
+    font-family: 'Barlow Condensed';
+    background-color: white;
+    color: black;
+    padding: 8px 18px;
+    font-size: 1em;
+    text-decoration: none;
+    border: solid 1px black;
+
+    &:hover {
+        font-weight: 500;
+    }
+
+    &:focus {
+        outline:0;
+    }
+}
+
+
 .landing-info {
     background-image: url("../images/dot-grid.png");
     width: 100vw;
@@ -131,15 +150,14 @@ footer {
 
 .form-container-wide {
     background-color: white;
-    width: 70%;
-    font-size: 1.2em;
+    font-size: 1em;
     // margin-top: -200px;
 }
 
 .form-wide-columns{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
 
 }
@@ -147,8 +165,9 @@ footer {
 .wide-columns {
     display: flex;
     flex-direction: column;
-    margin: 50px;
-
+    margin: 30px;
+    width: 300px;
+}
 
 form {
     display: flex;
@@ -172,7 +191,33 @@ form {
         font-style: italic;
         font-size: 1em;
         font-family: 200;
+
+        &:focus {
+            outline: none !important;
+            border-color: salmon;
+            box-shadow: 0 0 1px salmon;
+        }
+    }  
+
+    textarea {
+        height: 120px;
+        font-family: 'Barlow Semi Condensed';
+        padding: 5px;
+        color: dimgray;
+
+        &:focus {
+            outline: none !important;
+            border-color: salmon;
+            box-shadow: 0 0 1px salmon;
+        }
     }
+}
+
+input[type=file]::-webkit-file-upload-button {
+    border: 1px solid dimgray;
+    background-color: whitesmoke;
+    font-size: 0.8em;
+    font-family: 'Barlow Semi Condensed';
 }
 
 .form-link {
@@ -180,6 +225,9 @@ form {
     font-weight: 600;
 }
 
+.final-btn-container {
+    text-align: right;
+}
 
 .form-title {
     text-transform: uppercase;

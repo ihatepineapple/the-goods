@@ -52,6 +52,24 @@ body {
   outline: 0;
 }
 
+.white-btn {
+  font-family: 'Barlow Condensed';
+  background-color: white;
+  color: black;
+  padding: 8px 18px;
+  font-size: 1em;
+  text-decoration: none;
+  border: solid 1px black;
+}
+
+.white-btn:hover {
+  font-weight: 500;
+}
+
+.white-btn:focus {
+  outline: 0;
+}
+
 .landing-info {
   background-image: url("../images/dot-grid.png");
   width: 100vw;
@@ -141,8 +159,7 @@ footer .footer-links a {
 
 .form-container-wide {
   background-color: white;
-  width: 70%;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .form-wide-columns {
@@ -156,7 +173,9 @@ footer .footer-links a {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  text-align: left;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .wide-columns {
@@ -167,10 +186,7 @@ footer .footer-links a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 50px;
-}
-
-.wide-columns textarea {
+  margin: 30px;
   width: 300px;
 }
 
@@ -203,9 +219,41 @@ form input {
   font-family: 200;
 }
 
+form input:focus {
+  outline: none !important;
+  border-color: salmon;
+  -webkit-box-shadow: 0 0 1px salmon;
+          box-shadow: 0 0 1px salmon;
+}
+
+form textarea {
+  height: 120px;
+  font-family: 'Barlow Semi Condensed';
+  padding: 5px;
+  color: dimgray;
+}
+
+form textarea:focus {
+  outline: none !important;
+  border-color: salmon;
+  -webkit-box-shadow: 0 0 1px salmon;
+          box-shadow: 0 0 1px salmon;
+}
+
+input[type=file]::-webkit-file-upload-button {
+  border: 1px solid dimgray;
+  background-color: whitesmoke;
+  font-size: 0.8em;
+  font-family: 'Barlow Semi Condensed';
+}
+
 .form-link {
   text-decoration: none;
   font-weight: 600;
+}
+
+.final-btn-container {
+  text-align: right;
 }
 
 .form-title {

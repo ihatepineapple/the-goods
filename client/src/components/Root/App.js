@@ -76,22 +76,32 @@ function App() {
           exact path="/projects"
           component={ProjectList}
         />
+
+        <ProtectedRoute
+          user={loggedInUser}
+          exact path="/projects/:id"
+          component={ProjectDetails}
+        />
+
+        <ProtectedRoute
+          user={loggedInUser}
+          path="/projects/:id/edit"
+          component={EditProjectForm}
+        />
+        
         
         <ProtectedRoute
           user={loggedInUser}
           exact path="/profile"
           component={Profile}
         />
+
         <ProtectedRoute
           user={loggedInUser}
           exact path="/profile/:id/edit"
           component={EditProfileForm}
         />
-        <ProtectedRoute
-          user={loggedInUser}
-          path="/projects/:id"
-          component={ProjectDetails}
-        />
+        
       </Switch>
     </section>
   ) : (
