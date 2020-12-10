@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const ProjectSearch = (props) => {
     
@@ -11,7 +12,7 @@ const ProjectSearch = (props) => {
 
     return (
         <input 
-        className="input"
+        className="input-search"
         name="search" 
         type="text" 
         placeholder="Search here"

@@ -144,14 +144,11 @@ footer {
 .form-container {
     background-color: white;
     width: 40%;
-    font-size: 1.2em;
-    // margin-top: -200px;
 }
 
 .form-container-wide {
     background-color: white;
     font-size: 1em;
-    // margin-top: -200px;
 }
 
 .form-wide-columns{
@@ -262,7 +259,7 @@ input[type=file]::-webkit-file-upload-button {
     width: 25%;
     height: 600px;
     padding: 20px;
-    
+
 
     p {
         padding: 10px;
@@ -358,4 +355,100 @@ h3 {
     text-transform: uppercase;
     font-style: italic;
     font-weight: 300;
+}
+
+.project-details-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: whitesmoke;
+    height: 100vh;
+
+    .project-inside {
+        margin: 50px;
+        padding: 30px;
+        width: 90%;
+        background-color: white;
+
+        .details-header {
+            text-align: left;
+            color: dimgray;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+                color: black
+            }
+
+            .details-title {
+                font-weight: 400;
+                text-transform: uppercase;
+                font-size: 3em;
+                line-height: 0em;
+                line-break: 0;
+            }
+
+            a {
+                text-decoration: none;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.wrapper-projects {
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: column wrap;
+    max-height: 800px;
+    width: 100%;
+}
+
+
+.project-card {
+    width: 400px;
+    text-align: left;
+    border: solid 1px whitesmoke;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.info-card-wrap { 
+    display: flex;
+    justify-content: space-between;
+    align-items : center;  
+}
+
+.h3-card {
+    font-weight: 600;
+    line-height: 5px;
+}
+
+.text-card {
+    line-height: 0px;
+    color: dimgray;
+    p {
+        font-size: 0.9em;
+    }
+}
+
+.input-search {
+    width: 100%;
+    margin: 30px;
+    height: 30px;
+    border: none;
+    border-bottom: 2px dimgray solid;
+    color: dimgray;
+    font-style: italic;
+    font-size: 1em;
+    font-family: 200;
+
+        &:focus {
+            outline: none !important;
+            border-color: salmon;
+            box-shadow: 0 0 1px salmon;
+        }
+
 }

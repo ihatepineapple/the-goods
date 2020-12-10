@@ -29,21 +29,29 @@ function ProjectList() {
         setSearchState(true);
         setFilteredProjectListState(filteredProjectList);
       };
-
+    
     return (
-        <div>
-        <h1>List of Projects</h1>
+        <div >
+        {/* <h1>List of Projects</h1> */}
        <ProjectSearch handleFilterSearch={handleFilterProjects}/>
-        <div>
+        
+            <div className="wrapper-projects">
             {searchState ?
                 filteredProjectList.map((project) => {
                 return (
-                    <div >
-                        <div key={project._id}>
-                           <Link to={`/projects/${project._id}`}> <h3>{project.title}</h3></Link>
-                            <h4>{project.creativeField}</h4>
-                            <p>{project.description}</p>
-                            <img src={project.heroImage} alt={project.title} height="200" />
+                    <div className="projects-container">
+                        <div className="project-card" key={project._id}>
+                          
+                            {/* <h4>{project.creativeField}</h4>
+                            <p>{project.description}</p> */}
+                            <img src={project.heroImage} alt={project.title} width="400" />
+                            <div className="info-card-wrap">
+                            <div className="text-card">
+                                <h3 className="h3-card" >{project.title}</h3> <br/>
+                                <p> Posted under: <b>{project.creativeField}</b></p>
+                               </div>
+                               <Link to={`/projects/${project._id}`}> <button className="white-btn">See Details</button></Link>
+                           </div>
 
                         </div>
                     </div>  
@@ -52,19 +60,24 @@ function ProjectList() {
             :
             listOfProjects.map((project) => {
                 return (
-                    <div >
-                        <div key={project._id}>
-                           <Link to={`/projects/${project._id}`}> <h3>{project.title}</h3></Link>
-                            <h4>{project.creativeField}</h4>
-                            <p>{project.description}</p>
-                            <img src={project.heroImage} alt={project.title} height="200" />
+                    <div className="card">
+                        <div className="project-card" key={project._id}>
+                           <img src={project.heroImage} alt={project.title} width="400" />
+                           <div className="info-card-wrap">
+                               <div className="text-card">
+                                <h3 className="h3-card" >{project.title}</h3> <br/>
+                                <p> Posted under: <b>{project.creativeField}</b></p>
+                               </div>
+                               <Link to={`/projects/${project._id}`}> <button className="white-btn">See Details</button></Link>
+                           </div>
 
                         </div>
                     </div>  
                 )
             })
             }
-        </div>
+            </div>
+        
             
         </div>
     )

@@ -154,7 +154,6 @@ footer .footer-links a {
 .form-container {
   background-color: white;
   width: 40%;
-  font-size: 1.2em;
 }
 
 .form-container-wide {
@@ -406,5 +405,126 @@ h3 {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 300;
+}
+
+.project-details-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: whitesmoke;
+  height: 100vh;
+}
+
+.project-details-wrapper .project-inside {
+  margin: 50px;
+  padding: 30px;
+  width: 90%;
+  background-color: white;
+}
+
+.project-details-wrapper .project-inside .details-header {
+  text-align: left;
+  color: dimgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.project-details-wrapper .project-inside .details-header span {
+  color: black;
+}
+
+.project-details-wrapper .project-inside .details-header .details-title {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 3em;
+  line-height: 0em;
+  line-break: 0;
+}
+
+.project-details-wrapper .project-inside .details-header a {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.wrapper-projects {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  max-height: 800px;
+  width: 100%;
+}
+
+.project-card {
+  width: 400px;
+  text-align: left;
+  border: solid 1px whitesmoke;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.info-card-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.h3-card {
+  font-weight: 600;
+  line-height: 5px;
+}
+
+.text-card {
+  line-height: 0px;
+  color: dimgray;
+}
+
+.text-card p {
+  font-size: 0.9em;
+}
+
+.input-search {
+  width: 100%;
+  margin: 30px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px dimgray solid;
+  color: dimgray;
+  font-style: italic;
+  font-size: 1em;
+  font-family: 200;
+}
+
+.input-search:focus {
+  outline: none !important;
+  border-color: salmon;
+  -webkit-box-shadow: 0 0 1px salmon;
+          box-shadow: 0 0 1px salmon;
 }
 /*# sourceMappingURL=style.css.map */
