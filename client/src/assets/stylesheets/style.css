@@ -52,6 +52,10 @@ body {
   outline: 0;
 }
 
+.black-btn:disabled {
+  background-color: dimgray;
+}
+
 .white-btn {
   font-family: 'Barlow Condensed';
   background-color: white;
@@ -471,8 +475,7 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  max-height: 800px;
-  width: 100%;
+  max-height: 1600px;
 }
 
 .project-card {
@@ -481,6 +484,7 @@ h3 {
   border: solid 1px whitesmoke;
   padding: 5px;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .info-card-wrap {
@@ -510,7 +514,7 @@ h3 {
 }
 
 .input-search {
-  width: 100%;
+  width: 90%;
   margin: 30px;
   height: 30px;
   border: none;

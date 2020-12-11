@@ -16,7 +16,9 @@ const Profile = (props) => {
     const checkUserType = (loggedInUser) => {
       if (loggedInUser.type == "business") {
         return (
-          <div><button className="black-btn">Get in touch</button></div>
+          <div className="new-btn-div">
+          <button className="black-btn" onClick={() => window.location.href = `mailto:${profileDetails.email}`}>Get in touch</button>
+          </div>
         )
       }
     }
@@ -37,7 +39,7 @@ const Profile = (props) => {
     useEffect(getProfileDetails, [props.match.params]);
 
     const getProjectList = () => {
-        const id  = props.match.params;
+        const id  = profileDetails._id;
     
         axios
           .get(`http://localhost:5000/api/profile/${id}`, {
@@ -49,7 +51,7 @@ const Profile = (props) => {
           .catch((error) => console.error(error));
     };
 
-    useEffect(getProjectList, [props.match.params]);
+    useEffect(getProjectList, [profileDetails.projects]);
    
     if (profileDetails) {
         return (
@@ -62,18 +64,17 @@ const Profile = (props) => {
                     <p><InfoOutlinedIcon fontSize="small" className="icon"/>{profileDetails.extWeb}</p>
                     <p>{profileDetails.about}</p>
                     {checkUserType(props.loggedInUser)}
-                    <Link to={`/profile/${props.loggedInUser._id}/edit`} className="white-btn">Edit Profile</Link>
+                    
                 </div> 
               
                 <div className="project-container">
                   <div className="project-header">
-                    <h3>Project List</h3>
-                    <Link to="/projects/create"><button className="white-btn">Add New Project</button></Link>
+                    <h3>Project List</h3> 
                   </div>
                   <hr/>
                   <hr/>
-                    {(userProjectList.length === 0) ?
-                    <p>Start adding projects to gain visibility</p>
+                    {(profileDetails.projects && profileDetails.projects.length === 0) ?
+                    <p>This user has no projects yet</p>
                     :
                     userProjectList.map((project) => {
                         return (
@@ -89,7 +90,6 @@ const Profile = (props) => {
                                   </Link>
                                     <p>Created under: <span>{project.creativeField}</span></p>
                               
-                                  <Link to={`/projects/${project._id}/edit`}> <button className="white-btn">Edit Project</button></Link>
                                 </div>
                               </div>
                               <hr/>

@@ -31,8 +31,8 @@ function ProjectList() {
       };
     
     return (
-        <div >
-        {/* <h1>List of Projects</h1> */}
+        <div className="box">
+       
        <ProjectSearch handleFilterSearch={handleFilterProjects}/>
         
             <div className="wrapper-projects">
@@ -42,8 +42,6 @@ function ProjectList() {
                     <div className="projects-container">
                         <div className="project-card" key={project._id}>
                           
-                            {/* <h4>{project.creativeField}</h4>
-                            <p>{project.description}</p> */}
                             <img src={project.heroImage} alt={project.title} width="400" />
                             <div className="info-card-wrap">
                             <div className="text-card">

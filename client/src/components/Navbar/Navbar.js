@@ -21,6 +21,18 @@ const Navbar = (props) => {
     });
   };
 
+  const checkUserType = (loggedInUser) => {
+    if (loggedInUser.type == "talent") {
+      return (
+        <li>
+        <Link to="/profile" style={{ textDecoration: "none" }}>
+          Profile
+        </Link>
+      </li>
+      )
+    }
+  }
+
   if (loggedInUser) {
     return (
       <nav className="nav-style-loggedin">
@@ -34,11 +46,12 @@ const Navbar = (props) => {
               Projects
             </Link>
           </li>
-          <li>
+          { checkUserType(loggedInUser)}
+          {/* <li>
             <Link to="/profile" style={{ textDecoration: "none" }}>
               Profile
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/" onClick={logoutUser}>
               Logout
