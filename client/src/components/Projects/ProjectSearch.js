@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const ProjectSearch = (props) => {
     

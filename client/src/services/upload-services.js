@@ -8,7 +8,6 @@ class UploadService {
     });
   }
 
-  // Method to use for uploading an image
   uploadProfile = (theFile) => {
     return this.service
       .post("/api/upload-profile", theFile)

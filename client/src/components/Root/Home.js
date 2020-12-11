@@ -40,7 +40,6 @@ const Home = () => {
                </div>
            </footer>
             
-            {/* <Link to="/login"><h3> Log in</h3></Link> */}
         </div>
     )
 }

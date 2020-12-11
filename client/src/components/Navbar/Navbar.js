@@ -47,11 +47,6 @@ const Navbar = (props) => {
             </Link>
           </li>
           { checkUserType(loggedInUser)}
-          {/* <li>
-            <Link to="/profile" style={{ textDecoration: "none" }}>
-              Profile
-            </Link>
-          </li> */}
           <li>
             <Link to="/" onClick={logoutUser}>
               Logout

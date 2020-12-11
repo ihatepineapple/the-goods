@@ -407,7 +407,7 @@ h3 {
     display: flex;
     justify-content: space-evenly;
     flex-flow: column wrap;
-    max-height: 1600px;
+    max-height: 3400px;
     // columns: 3 400px;
     // overflow: hidden;
     
@@ -419,9 +419,8 @@ h3 {
     text-align: left;
     border: solid 1px whitesmoke;
     padding: 5px;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
+    margin: 10px;
+    
 
 .info-card-wrap { 
     display: flex;

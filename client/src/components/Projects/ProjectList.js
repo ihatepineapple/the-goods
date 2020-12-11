@@ -39,12 +39,11 @@ function ProjectList() {
             {searchState ?
                 filteredProjectList.map((project) => {
                 return (
-                    <div className="projects-container">
+                    <div className="card">
                         <div className="project-card" key={project._id}>
-                          
-                            <img src={project.heroImage} alt={project.title} width="400" />
-                            <div className="info-card-wrap">
-                            <div className="text-card">
+                           <img src={project.heroImage} alt={project.title} width="400" />
+                           <div className="info-card-wrap">
+                               <div className="text-card">
                                 <h3 className="h3-card" >{project.title}</h3> <br/>
                                 <p> Posted under: <b>{project.creativeField}</b></p>
                                </div>

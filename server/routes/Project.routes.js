@@ -24,7 +24,7 @@ router.post("/projects", (req, res) => {
       })
       .then((response) => {
         res.status(200).json(response);
-        //populate response id 
+    
       })
       .catch((err) => {
         res.status(500).json(err);

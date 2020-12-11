@@ -48,15 +48,10 @@ function App() {
         getUser={getLoggedInUser}
         exact path="/login" 
         render={() => <Redirect to="/projects"/>}
-        // render={() => <Redirect to={`/profile/${loggedInUser._id}`}/>}
+    
         />
 
-        {/* <ProtectedRoute 
-        getUser={getLoggedInUser}
-        exact path="/login" 
-        component={Profile}
-
-        /> */}
+  
         <ProtectedRoute
           user={loggedInUser}
           exact path="/projects/create"

@@ -96,7 +96,7 @@ router.post("/logout", (req, res) => {
 
 /* LOGGEDIN */
 router.get("/loggedin", (req, res) => {
-  // req.isAuthenticated() is defined by passport
+
   if (req.isAuthenticated()) {
     res.status(200).json(req.user);
     return;

@@ -11,13 +11,13 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "the-goods", // The name of the folder in cloudinary.
-    allowedFormats: ["jpg", "png"], // The allowed formats of files to upload to cloudinary.
-    use_filename: true, // Give the file a name to refer to when uploading to cloudinary.
+    folder: "the-goods", 
+    allowedFormats: ["jpg", "png"], 
+    use_filename: true, 
   },
 });
 
-// pass Cloudinary Storage to multer so that it can be used in the routes
+
 const uploadCloud = multer({ storage });
 
 module.exports = uploadCloud;

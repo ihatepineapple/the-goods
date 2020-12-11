@@ -48,7 +48,7 @@ const Login = (props) => {
             name="email"
             value={loginState.email}
             onChange={handleChange}
-            // placeholder="Type your email here"
+         
           />
           <label>Password:</label>
           <input
