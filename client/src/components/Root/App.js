@@ -14,6 +14,7 @@ import Login from '../Auth/Login';
 import Navbar from "../Navbar/Navbar";
 import ProtectedRoute from "../Auth/ProtectedRoute";
 import EditProfileForm from "../Profile/Forms/EditProfileForm";
+import ProfileFromBusiness from "../Profile/ProfileFromBusiness";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -39,22 +40,6 @@ function App() {
 
   fetchUser();
 
-  // return (
-  //   <div className="App">
-  //    <h1>this is the landing page (for now)</h1>
-  //    <Switch>
-  //       <Route exact path="/" component={Home} />
-  //       <Route exact path="/signup" render={() => <Signup getUser={getLoggedInUser} />} />
-  //       <Route exact path="/login" component={Login} />
-  //       <Route exact path="/profile/:id" component={Profile} />
-  //       <Route exact path="/projects" component={ProjectList} />
-  //       <Route exact path="/projects/:id" component={ProjectDetails} />
-  //       <Route exact path="/projects/:id/edit" component={EditProjectForm} />
-  //       <Route path="/projects/create" component={AddProjectForm} />
-  //     </Switch>
-  //   </div>
-  // );
-
   return loggedInUser ? (
     <section className="App">
       <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
@@ -62,9 +47,16 @@ function App() {
         <Route 
         getUser={getLoggedInUser}
         exact path="/login" 
-        render={() => <Redirect to="/profile"/>}
-
+        render={() => <Redirect to="/projects"/>}
+        // render={() => <Redirect to={`/profile/${loggedInUser._id}`}/>}
         />
+
+        {/* <ProtectedRoute 
+        getUser={getLoggedInUser}
+        exact path="/login" 
+        component={Profile}
+
+        /> */}
         <ProtectedRoute
           user={loggedInUser}
           exact path="/projects/create"
@@ -92,9 +84,15 @@ function App() {
         
         <ProtectedRoute
           user={loggedInUser}
+          exact path="/profile/:id"
+          component={ProfileFromBusiness}
+        />
+
+        <ProtectedRoute
+          user={loggedInUser}
           exact path="/profile"
           component={Profile}
-        />
+        />    
 
         <ProtectedRoute
           user={loggedInUser}

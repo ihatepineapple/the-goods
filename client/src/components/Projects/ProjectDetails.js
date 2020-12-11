@@ -48,9 +48,31 @@ const ProjectDetails = (props) => {
     //       );
     //   }
     // };
-    console.log(details._id)
+    // console.log(details.owner._id)
+    // console.log(props.loggedInUser._id)
     // const listImages = [...details.images]
     // console.log(listImages)
+      const showCorrectLink = () =>
+        ( details.owner._id === props.loggedInUser._id) ? (
+          <p>Project created by: 
+        { details.owner && 
+        <Link to="/profile">
+        { details.owner && <span> {details.owner.firstName} </span> }
+        { details.owner && <span>{details.owner.lastName} </span> }
+        </Link>}
+         under <span>{details.creativeField}</span></p>
+         )
+         : (
+          <p>Project created by: 
+        { details.owner && 
+        <Link to={`/profile/${details.owner._id}`}>
+        { details.owner && <span> {details.owner.firstName} </span> }
+        { details.owner && <span>{details.owner.lastName} </span> }
+        </Link>}
+         under <span>{details.creativeField}</span></p>
+        )
+      
+
 
     return (
         <div className="project-details-wrapper">
@@ -59,11 +81,27 @@ const ProjectDetails = (props) => {
             <div className="details-header">
               <div>
               <h2 className="details-title">{details.title}</h2>
-                <p>Project created by: 
-                { details.owner && <Link to={`/profile/${details.owner._id}`}>
+             
+                { details.owner && showCorrectLink()
+                  
+                  /* {(details.owner._id && details.owner._id === props.loggedInUser._id) ? (
+                  <p>Project created by: 
+                { details.owner && 
+                <Link to="/profile">
                 { details.owner && <span> {details.owner.firstName} </span> }
-                { details.owner && <span>{details.owner.lastName} </span> }</Link>}
+                { details.owner && <span>{details.owner.lastName} </span> }
+                </Link>}
                  under <span>{details.creativeField}</span></p>
+                 )
+                 : (
+                  <p>Project created by: 
+                { details.owner && 
+                <Link to={`/profile/${details.owner._id}`}>
+                { details.owner && <span> {details.owner.firstName} </span> }
+                { details.owner && <span>{details.owner.lastName} </span> }
+                </Link>}
+                 under <span>{details.creativeField}</span></p>
+                )} */}
               </div>
                  <div> <Link to="/projects"><button className="white-btn">Go Back</button></Link></div>   
                 
@@ -81,8 +119,8 @@ const ProjectDetails = (props) => {
               
            
             
-          </div>
-            
+            </div>
+              
           
            
         </div>

@@ -22,7 +22,7 @@ const Profile = (props) => {
     }
 
     const getProfileDetails = () => {
-        const id  = props.loggedInUser._id;
+        const { id }  = props.match.params;
     
         axios
           .get(`http://localhost:5000/api/profile/${id}`, {
@@ -34,10 +34,10 @@ const Profile = (props) => {
           .catch((error) => console.error(error));
     };
 
-    useEffect(getProfileDetails, [props.loggedInUser._id]);
+    useEffect(getProfileDetails, [props.match.params]);
 
     const getProjectList = () => {
-        const id  = props.loggedInUser._id;
+        const id  = props.match.params;
     
         axios
           .get(`http://localhost:5000/api/profile/${id}`, {
@@ -49,9 +49,9 @@ const Profile = (props) => {
           .catch((error) => console.error(error));
     };
 
-    useEffect(getProjectList, [props.loggedInUser._id]);
+    useEffect(getProjectList, [props.match.params]);
    
-    if (props.loggedInUser) {
+    if (profileDetails) {
         return (
             <div className="info-wrapper">
                 <div className="info-container">
@@ -64,7 +64,7 @@ const Profile = (props) => {
                     {checkUserType(props.loggedInUser)}
                     <Link to={`/profile/${props.loggedInUser._id}/edit`} className="white-btn">Edit Profile</Link>
                 </div> 
-               
+              
                 <div className="project-container">
                   <div className="project-header">
                     <h3>Project List</h3>

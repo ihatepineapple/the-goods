@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const router = Router();
 
 const User = require("../models/User.model");
-
+//get profile is for talent (you get your own profile)
+// get profile/id and that's for business (they get someone else profile)
 router.get("/profile/:id", (req, res) => {
     const { id } = req.params;
   
