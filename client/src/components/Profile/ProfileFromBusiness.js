@@ -25,7 +25,7 @@ const Profile = (props) => {
         const { id }  = props.match.params;
     
         axios
-          .get(`http://localhost:5000/api/profile/${id}`, {
+          .get(`https://the-goods20.herokuapp.com/api/profile/${id}`, {
             withCredentials: true,
           })
           .then((responseFromApi) => {
@@ -40,7 +40,7 @@ const Profile = (props) => {
         const id  = profileDetails._id;
     
         axios
-          .get(`http://localhost:5000/api/profile/${id}`, {
+          .get(`https://the-goods20.herokuapp.com/api/profile/${id}`, {
             withCredentials: true,
           })
           .then((responseFromApi) => {

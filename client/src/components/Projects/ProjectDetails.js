@@ -9,7 +9,7 @@ const ProjectDetails = (props) => {
         const { id } = props.match.params;
     
         axios
-          .get(`http://localhost:5000/api/projects/${id}`, {
+          .get(`https://the-goods20.herokuapp.com/api/projects/${id}`, {
             withCredentials: true,
           })
           .then((responseFromApi) => {

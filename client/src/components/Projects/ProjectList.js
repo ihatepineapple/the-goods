@@ -10,7 +10,7 @@ function ProjectList() {
 
     const getAllProjects = () => {
         axios
-          .get(`http://localhost:5000/api/projects`, { withCredentials: true })
+          .get(`https://the-goods20.herokuapp.com/api/projects`, { withCredentials: true })
           .then((responseFromApi) => {
             setListOfProjects(responseFromApi.data);
           })

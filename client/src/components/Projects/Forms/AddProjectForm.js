@@ -28,7 +28,7 @@ const AddProjectForm = (props) => {
     
         axios
           .post(
-            "http://localhost:5000/api/projects",
+            "https://the-goods20.herokuapp.com/api/projects",
             { title, creativeField, description, heroImage, images },
             { withCredentials: true }
           )

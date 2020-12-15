@@ -22,7 +22,7 @@ const EditProfileForm = (props) => {
     
         axios
           .put(
-            `http://localhost:5000/api/profile/${profileData}`,
+            `https://the-goods20.herokuapp.com/api/profile/${profileData}`,
             { firstName, lastName, creativeFields, location, extWeb, userImg, about },
             { withCredentials: true }
           )

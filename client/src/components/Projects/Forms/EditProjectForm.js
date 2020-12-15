@@ -21,7 +21,7 @@ const EditProjectForm = (props) => {
     
         axios
         .put(
-            `http://localhost:5000/api/projects/${projectData}`,
+            `https://the-goods20.herokuapp.com/api/projects/${projectData}`,
             { title, creativeField, description, heroImage },
             { withCredentials: true }
         )
@@ -58,7 +58,7 @@ const EditProjectForm = (props) => {
     const getDataFromProject = () => {
         axios
         .get(
-            `http://localhost:5000/api/projects/${projectData}`,
+            `https://the-goods20.herokuapp.com/api/projects/${projectData}`,
     
         )
         .then((dataFromDB) => {
@@ -71,7 +71,7 @@ const EditProjectForm = (props) => {
     const deleteProject = () => {
         
         axios
-          .delete(`http://localhost:5000/api/projects/${projectData}`, {
+          .delete(`https://the-goods20.herokuapp.com/api/projects/${projectData}`, {
             withCredentials: true,
           })
           .then((results) => {
