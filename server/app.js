@@ -78,5 +78,16 @@ app.use('/api', require('./routes/auth.routes'));
 app.use('/api', require('./routes/user.routes'));
 app.use('/api', require('./routes/fileUpload.routes'));
 
+// Setting up environments
+if (process.env.NODE_ENV === "production") {
+  // set ability to get static values from client build folder
+  // static files include all javascript and css files
+  app.use(express.static("client/build"));
+
+  // get the index.html that will be rendered on the browser
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "../client", "build", "index.html"));
+  });
+}
 
 module.exports = app;

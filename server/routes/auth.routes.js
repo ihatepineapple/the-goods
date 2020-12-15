@@ -13,13 +13,13 @@ router.post("/signup", (req, res) => {
     return;
   }
 
-//   if (password.length < 7) {
-//     res.status(400).json({
-//       message:
-//         "Please make your password at least 8 characters long for security purposes.",
-//     });
-//     return;
-//   }
+  if (password.length < 7) {
+    res.status(400).json({
+      message:
+        "Please make your password at least 8 characters long for security purposes.",
+    });
+    return;
+  }
 
   User.findOne({ email }, (err, foundUser) => {
     if (err) {
