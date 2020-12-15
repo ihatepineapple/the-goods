@@ -22,7 +22,7 @@ const Navbar = (props) => {
   };
 
   const checkUserType = (loggedInUser) => {
-    if (loggedInUser.type == "talent") {
+    if (loggedInUser.type === "talent") {
       return (
         <li>
         <Link to="/profile" style={{ textDecoration: "none" }}>

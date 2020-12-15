@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import { Switch, Route, useParams, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import AuthService from '../../services/auth-services';
 
 import Home from './Home';

@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+// import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+// import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import '../../assets/stylesheets/style.css';
 
-import AuthService from "../../services/auth-services";
 
 const Profile = (props) => {
     const [profileDetails, setProfileDetails] = useState({});
     const [userProjectList, setUserProjectList] = useState([]);
 
-    const service = new AuthService();
 
     const checkUserType = (loggedInUser) => {
-      if (loggedInUser.type == "business") {
+      if (loggedInUser.type === "business") {
         return (
           <div className="new-btn-div">
           <button className="black-btn" onClick={() => window.location.href = `mailto:${profileDetails.email}`}>Get in touch</button>
@@ -51,7 +49,7 @@ const Profile = (props) => {
           .catch((error) => console.error(error));
     };
 
-    useEffect(getProjectList, [profileDetails.projects]);
+    useEffect(getProjectList, [profileDetails.projects, profileDetails._id]);
    
     if (profileDetails) {
         return (
@@ -60,8 +58,8 @@ const Profile = (props) => {
                     <img src={profileDetails.userImg} alt={profileDetails.firstName}/>
                     <h4>{profileDetails.firstName} {profileDetails.lastName}</h4>
                     <p>{profileDetails.creativeFields}</p>
-                    <p><RoomOutlinedIcon fontSize="small" className="icon"/>{profileDetails.location}</p>
-                    <p><InfoOutlinedIcon fontSize="small" className="icon"/>{profileDetails.extWeb}</p>
+                    <p>Location: {profileDetails.location}</p>
+                    <p>{profileDetails.extWeb}</p>
                     <p>{profileDetails.about}</p>
                     {checkUserType(props.loggedInUser)}
                     

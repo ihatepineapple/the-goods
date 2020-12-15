@@ -18,7 +18,7 @@ const ProjectDetails = (props) => {
           .catch((error) => console.error(error));
       };
     
-    useEffect(getSingleProject, [props.match.params.id]);
+    useEffect(getSingleProject, [props.match.params]);
 
     const showCorrectLink = () =>
         ( details.owner._id === props.loggedInUser._id) ? (
@@ -59,7 +59,7 @@ const ProjectDetails = (props) => {
               {details.images && details.images.map((element, index) => {
                 return (
                   <div key={index}>
-                    <img src={element} width="700" />
+                    <img src={element} width="700" alt="project-imageGoods" />
 
                   </div>
                 )

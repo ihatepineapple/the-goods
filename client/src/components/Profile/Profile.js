@@ -5,16 +5,14 @@ import { Link } from "react-router-dom";
 // import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import '../../assets/stylesheets/style.css';
 
-import AuthService from "../../services/auth-services";
 
 const Profile = (props) => {
     const [profileDetails, setProfileDetails] = useState({});
     const [userProjectList, setUserProjectList] = useState([]);
 
-    const service = new AuthService();
 
     const checkUserType = (loggedInUser) => {
-      if (loggedInUser.type == "business") {
+      if (loggedInUser.type === "business") {
         return (
           <div><button className="black-btn">Get in touch</button></div>
         )
