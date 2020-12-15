@@ -8,7 +8,8 @@ const initialState = { email: "", password: "" };
 
 const Login = (props) => {
   const [loginState, setLoginState] = useState(initialState);
-  const [loginErrorMsg, setLoginErrorMsg] = useState("");
+  const [loginErrorMsg] = useState("");
+  // const [loginErrorMsg, setLoginErrorMsg] = useState("");
 
   const service = new AuthService();
 
