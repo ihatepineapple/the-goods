@@ -25,8 +25,8 @@ const Login = (props) => {
         props.getUser(response);
       })
       .catch((error) => {
-        const { message } = error.response.data;
-        setLoginErrorMsg(message);
+        // const { message } = error.response.data;
+        // setLoginErrorMsg(message);
         console.log(error);
       });
   };
