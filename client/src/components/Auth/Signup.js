@@ -74,10 +74,10 @@ const Signup = (props) => {
             <label>Who are you?</label>
             <br />
             <div>
-                <input type="radio" name="type" value="talent" onChange={handleChange}/>
-                <label>I am a freelancer</label>
-                <input type="radio" name="type" value="business" onChange={handleChange}/>
-                <label>I am looking for talent</label>
+                <input type="radio" name="type" value="talent" id="freelancer" onChange={handleChange}/>
+                <label for="freelancer">I am a freelancer</label>
+                <input type="radio" name="type" value="business" id="business" onChange={handleChange}/>
+                <label for="business">I am looking for talent</label>
             </div>
          
             
